@@ -9,5 +9,6 @@ storage/informes/
 storage/importaciones/
 storage/plantillas/
 storage/originales/
+!storage/plantillas/.gitkeep
 clinica_termografia.db
 .vscode/
