@@ -6,5 +6,8 @@ venv/
 storage/*.db
 storage/capturas/
 storage/informes/
+storage/importaciones/
+storage/plantillas/
+storage/originales/
 clinica_termografia.db
 .vscode/
