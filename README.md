@@ -1,4 +1,8 @@
-# Sistema de Termografia Medica
+# Proyect_Clinica
+
+Sistema de escritorio offline-first para termografia medica, desarrollado con Python, PySide6, OpenCV, SQLAlchemy y ReportLab.
+
+Permite gestionar historias clinicas, visualizar multiples camaras termicas, asociar capturas a pacientes y generar informes PDF.
 
 Aplicacion de escritorio offline-first para registrar historias clinicas, visualizar camaras termicas, guardar capturas y generar informes PDF.
 
