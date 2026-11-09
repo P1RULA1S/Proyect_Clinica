@@ -3,7 +3,7 @@ from pathlib import Path
 
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import Image, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 from reportlab.lib import colors
 
 from database import CAPTURES_DIR
@@ -36,6 +36,16 @@ def generar_pdf(patient_id, values, capture_paths):
     ]))
     story.append(table)
     story.append(Spacer(1, 16))
-    story.append(Paragraph("Capturas asociadas: " + ", ".join(capture_paths) if capture_paths else "Sin capturas", styles["BodyText"]))
+    if capture_paths:
+        story.append(Paragraph("Capturas termicas", styles["Heading2"]))
+        for capture_path in capture_paths:
+            image_path = Path(capture_path)
+            if image_path.exists():
+                image = Image(str(image_path))
+                image._restrictSize(240, 180)
+                story.append(image)
+                story.append(Spacer(1, 8))
+    else:
+        story.append(Paragraph("Sin capturas", styles["BodyText"]))
     document.build(story)
     return path
