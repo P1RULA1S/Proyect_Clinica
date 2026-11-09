@@ -33,19 +33,25 @@ class MainWindow(QMainWindow):
 
     def _build_style(self):
         self.setStyleSheet("""
-            QMainWindow { background: #f8fafc; font-family: Segoe UI; }
+            QMainWindow, QWidget { background: #f8fafc; color: #334155; font-family: Segoe UI; }
             QTabWidget::pane { border: 1px solid #e2e8f0; background: white; }
             QTabBar::tab { background: #e2e8f0; color: #475569; padding: 11px 22px; font-weight: bold; }
             QTabBar::tab:selected { background: white; color: #0f172a; border-bottom: 2px solid #0ea5e9; }
-            QGroupBox { color: #334155; font-weight: bold; background: white; border: 1px solid #e2e8f0; border-radius: 6px; margin-top: 12px; padding: 16px; }
-            QGroupBox::title { subcontrol-origin: margin; padding: 0 6px; color: #0284c7; }
-            QLineEdit, QComboBox, QTextEdit { padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #f8fafc; color: #0f172a; }
+            QGroupBox { color: #334155; font-weight: bold; background: white; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 12px; padding: 16px; }
+            QGroupBox::title { subcontrol-origin: margin; padding: 0 6px; color: #0369a1; background: #f8fafc; }
+            QLineEdit, QComboBox, QTextEdit { min-height: 22px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px; background: #ffffff; color: #0f172a; selection-background-color: #bae6fd; selection-color: #0f172a; }
             QLineEdit:focus, QComboBox:focus, QTextEdit:focus { border: 1px solid #0ea5e9; background: white; }
+            QComboBox::drop-down { width: 28px; border-left: 1px solid #cbd5e1; background: #f1f5f9; }
+            QComboBox QAbstractItemView { background: #ffffff; color: #334155; border: 1px solid #94a3b8; selection-background-color: #bae6fd; selection-color: #0f172a; padding: 4px; }
             QCheckBox { color: #334155; spacing: 7px; }
+            QCheckBox::indicator { width: 16px; height: 16px; background: white; border: 1px solid #94a3b8; border-radius: 3px; }
+            QCheckBox::indicator:checked { background: #0ea5e9; border-color: #0284c7; }
             QPushButton { background: #0ea5e9; color: white; padding: 10px 16px; border: none; border-radius: 4px; font-weight: bold; }
             QPushButton:hover { background: #0284c7; }
+            QPushButton:pressed { background: #0369a1; }
             QPushButton:disabled { background: #94a3b8; }
             QLabel { color: #334155; }
+            QScrollArea { border: none; background: #f8fafc; }
         """)
 
     def _build_ui(self):
@@ -101,6 +107,7 @@ class MainWindow(QMainWindow):
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         container = QWidget()
+        container.setStyleSheet("background: #f8fafc;")
         grid = QGridLayout(container)
         grid.setSpacing(14)
         grid.addWidget(self._build_main_data(), 0, 0)
